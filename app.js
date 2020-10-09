@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 // const validator = require("express-validator");
 require("dotenv").config();
@@ -25,6 +26,7 @@ mongoose
   .then(() => console.log("DB connected."));
 
 // middlewares
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieParser());

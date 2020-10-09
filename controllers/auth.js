@@ -8,12 +8,13 @@ exports.signup = (req, res) => {
   user.save((err, user) => {
     if (err) {
       return res.status(400).json({
-        err,
+        error: "Email is already used",
       });
     }
     user.salt = undefined;
     user.hashed_password = undefined;
     res.json({
+      error: "",
       user,
     });
   });
